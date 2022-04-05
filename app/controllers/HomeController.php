@@ -13,11 +13,11 @@ use PDO;
 use Delight\Auth\Auth;
 
 // $db = new QueryBilder();
-// // $posts = $db->getAll('posts');//Загрузить все записи с БД
-// // $db->insert(['title' => 'New Post2'], 'posts');//Добавить новую запись в БД
-// // $db->update(['title' => 'New Post2'], 7, 'posts');//Обновляем запись в БД
-// // $db->delete('posts', 6);//Удалить запись с БД
-// $posts = $db->getOne(['id' , 'title'], 'posts', 5);//Вывод одной записи с БД
+// // $posts = $db->getAll('posts');//Load all records from the database
+// // $db->insert(['title' => 'New Post2'], 'posts');//Add a new record in the database
+// // $db->update(['title' => 'New Post2'], 7, 'posts');//Update a record in the database
+// // $db->delete('posts', 6);//Delete record from database
+// $posts = $db->getOne(['id' , 'title'], 'posts', 5);//Outputting one record from the database
 
 class HomeController
 {
@@ -31,7 +31,6 @@ class HomeController
         $this->templates = $engine;
         $this->qb = $qb;
         $this->auth = $auth;
-        // d($this->templates);die();
     }
 
     public function index()
@@ -46,8 +45,4 @@ class HomeController
         }
 
     }
-
-    // public function about(){
-    // 	echo $this->templates->render('about', ['name' => 'About']);
-    // }
 }

@@ -141,10 +141,10 @@ class UsersController
         if ($this->auth->isLoggedIn()) {
             if ($this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
                 echo $this->templates->render('security', ['user' => $select_user]);//View edit
-                //Переходим на форму редактирования
+                // Go to the editing form
             } else {
                 if ($get_user_id == $_GET['id']) {
-                    // Якщо твій аккаунт то переходимо на форму
+                    // If your account then go to the form
                     echo $this->templates->render('security', ['user' => $select_user]);//View edit
                 } else {
                     $this->flash->message("Can eventually only your profile", 'success');
@@ -163,15 +163,15 @@ class UsersController
         $old_password = $_POST['old_password'];
         $new_password = $_POST['new_password'];
 
-        $userId = $this->auth->getUserId();//Получили ід користувача
-        $select_email_from_db = $this->qb->select_email('email', 'users', $_POST['email']);//Получили почту з бази данних
-        $select_email_auth_user = $this->auth->getEmail();//Получили почту авторизованого користувача
-        $role_admin = $this->auth->admin()->doesUserHaveRole($userId, \Delight\Auth\Role::ADMIN);//Получили роль адміністратора авторизованого користувача
+        $userId = $this->auth->getUserId();// Received user ID
+        $select_email_from_db = $this->qb->select_email('email', 'users', $_POST['email']);// Received mail from the database
+        $select_email_auth_user = $this->auth->getEmail();// Received authorized user mail
+        $role_admin = $this->auth->admin()->doesUserHaveRole($userId, \Delight\Auth\Role::ADMIN);// Received the role of administrator of the authorized user
 
         if (trim($_POST['email'] == '')) {
             header("Location: /");
         } else {
-            if (!$select_email_from_db == $email || $email == $select_email_auth_user || $role_admin) {//Якщо почта вільна то обновлюємо данні
+            if (!$select_email_from_db == $email || $email == $select_email_auth_user || $role_admin) {// If the mail is free, we update the data
                 if (trim($_POST['old_password'] == '' && $_POST['new_password'] == '')) {
                     $this->qb->update(['email' => $_POST['email']], $_POST['id'], 'users');
                 } else {
@@ -218,7 +218,7 @@ class UsersController
                 if ($get_user_id == $_GET['id']) {
                     echo $this->templates->render('status', ['user' => $select_user, 'select_all_status' => $select_all_status]);
                 } else {
-                    $this->flash->message("Можливо редагувати тільки свій профіль!", 'success');
+                    $this->flash->message("It is possible to edit only your profile!", 'success');
                     header("Location: /");
                 }
             }
@@ -229,15 +229,15 @@ class UsersController
 
     public function update_status()
     {
-        $userId = $this->auth->getUserId();//Получили ід користувача
+        $userId = $this->auth->getUserId();
         $role_admin = $this->auth->hasRole(\Delight\Auth\Role::ADMIN);
 
         if ($userId == $_POST['id'] || $role_admin) {
             $this->qb->update(['status' => $_POST['select_status']], $_POST['id'], 'users');
-            $this->flash->message("Профіль успішно оновлено!", 'success');
+            $this->flash->message("Profile updated successfully!", 'success');
             header("Location: /page_profile");
         } else {
-            $this->flash->message("Ви не можете змінити статус!", 'warning');
+            $this->flash->message("You cannot change your status!", 'warning');
             header("Location: /status");
         }
 
@@ -257,7 +257,7 @@ class UsersController
                 if ($get_user_id == $_GET['id']) {
                     echo $this->templates->render('/page_media', ['user' => $select_user]);
                 } else {
-                    $this->flash->message("Можливо редагувати тільки свій профіль!", 'warning');
+                    $this->flash->message("It is possible to edit only your profile!", 'warning');
                     header("Location: /");
                 }
             }
@@ -270,7 +270,7 @@ class UsersController
     public function upload_media()
     {
 
-        $userId = $this->auth->getUserId();//Получили ід користувача
+        $userId = $this->auth->getUserId();
         $role_admin = $this->auth->hasRole(\Delight\Auth\Role::ADMIN);
         $tmp_name = $_FILES['image']['tmp_name'];
         $name = $_FILES['image']['name'];
@@ -281,12 +281,12 @@ class UsersController
                     $name_image = uniqid() . $name;
                     move_uploaded_file($tmp_name, '../img/' . $name_image);
                     $this->qb->update(['image' => $name_image], $_POST['id'], 'users');
-                    $this->flash->message("Профіль успішно оновлено!", 'success');
+                    $this->flash->message("Profile updated successfully!", 'success');
                     header("Location: /page_profile");
                 }
             }
         } else {
-            $this->flash->message("Ви не можете оновити профіль!", 'warning');
+            $this->flash->message("You cannot update your profile!", 'warning');
             header("Location: /page_profile");
         }
     }
@@ -300,9 +300,9 @@ class UsersController
         if ($this->auth->isLoggedIn()) {
             if ($this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
                 try {
-                    unlink('../img/' . $select_user['image']);//Удаляю аватарку с диска
+                    unlink('../img/' . $select_user['image']);
                     $this->auth->admin()->deleteUserById($user_id);
-                    $this->flash->message("Користувач видаленний!", 'warning');
+                    $this->flash->message("User deleted!", 'warning');
                     header("Location: /");
                 } catch (\Delight\Auth\UnknownIdException $e) {
                     die('Unknown ID');
@@ -310,7 +310,7 @@ class UsersController
             } else {
                 if ($get_user_id == $user_id) {
                     try {
-                        unlink('../img/' . $select_user['image']);//Удаляю аватарку с диска
+                        unlink('../img/' . $select_user['image']);
                         $this->auth->admin()->deleteUserById($user_id);
                         session_destroy();
                         header("Location: /register");
@@ -318,7 +318,7 @@ class UsersController
                         die('Unknown ID');
                     }
                 } else {
-                    $this->flash->message("Можливо редагувати тільки свій профіль!", 'warning');
+                    $this->flash->message("It is possible to edit only your profile!", 'warning');
                     header("Location: /");
                 }
             }

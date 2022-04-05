@@ -17,23 +17,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-primary-gradient">
     <a class="navbar-brand d-flex align-items-center fw-500" href="users.html"><img alt="logo"
                                                                                     class="d-inline-block align-top mr-2"
-                                                                                    src="img/logo.png"> Учебный
-        проект</a>
+                                                                                    src="img/logo.png"> Training
+        project</a>
     <button aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
             data-target="#navbarColor02" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/login">Войти</a>
+                <a class="nav-link" href="/login">Sign in</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/logout">Выйти</a>
+                <a class="nav-link" href="/logout">Sign out</a>
             </li>
         </ul>
     </div>
@@ -41,7 +41,7 @@
 <main id="js-page-content" role="main" class="page-content mt-3">
     <div class="subheader">
         <h1 class="subheader-title">
-            <i class='subheader-icon fal fa-plus-circle'></i> Добавить пользователя
+            <i class='subheader-icon fal fa-plus-circle'></i> Add user
         </h1>
 
 
@@ -52,30 +52,30 @@
                 <div id="panel-1" class="panel">
                     <div class="panel-container">
                         <div class="panel-hdr">
-                            <h2>Общая информация</h2>
+                            <h2>General information</h2>
                         </div>
                         <div class="panel-content">
                             <!-- username -->
                             <div class="form-group">
-                                <label class="form-label" for="simpleinput">Имя</label>
+                                <label class="form-label" for="simpleinput">Name</label>
                                 <input type="text" id="simpleinput" name="user_name" class="form-control">
                             </div>
 
                             <!-- title -->
                             <div class="form-group">
-                                <label class="form-label" for="simpleinput">Место работы</label>
+                                <label class="form-label" for="simpleinput">Place of work</label>
                                 <input type="text" id="simpleinput" name="work" class="form-control">
                             </div>
 
                             <!-- tel -->
                             <div class="form-group">
-                                <label class="form-label" for="simpleinput">Номер телефона</label>
+                                <label class="form-label" for="simpleinput">Phone number</label>
                                 <input type="text" id="simpleinput" name="phone" class="form-control">
                             </div>
 
                             <!-- address -->
                             <div class="form-group">
-                                <label class="form-label" for="simpleinput">Адрес</label>
+                                <label class="form-label" for="simpleinput">The address</label>
                                 <input type="text" id="simpleinput" name="address" class="form-control">
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                 <div id="panel-1" class="panel">
                     <div class="panel-container">
                         <div class="panel-hdr">
-                            <h2>Безопасность и Медиа</h2>
+                            <h2>Security and Media</h2>
                         </div>
                         <div class="panel-content">
                             <!-- email -->
@@ -98,23 +98,23 @@
 
                             <!-- password -->
                             <div class="form-group">
-                                <label class="form-label" for="simpleinput">Пароль</label>
+                                <label class="form-label" for="simpleinput">Password</label>
                                 <input type="password" id="simpleinput" name="password" class="form-control">
                             </div>
 
 
                             <!-- status -->
                             <div class="form-group">
-                                <label class="form-label" for="example-select">Выберите статус</label>
+                                <label class="form-label" for="example-select">Select status</label>
                                 <select class="form-control" id="example-select" name="status_online">
-                                    <option value="0">Онлайн</option>
-                                    <option value="1">Отошел</option>
-                                    <option value="2">Не беспокоить</option>
+                                    <option value="0">Online</option>
+                                    <option value="1">Departed</option>
+                                    <option value="2">Do not disturb</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="example-fileinput">Загрузить аватар</label>
+                                <label class="form-label" for="example-fileinput">Upload avatar</label>
                                 <input type="file" id="example-fileinput" class="form-control-file">
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                 <div id="panel-1" class="panel">
                     <div class="panel-container">
                         <div class="panel-hdr">
-                            <h2>Социальные сети</h2>
+                            <h2>Social media</h2>
                         </div>
                         <div class="panel-content">
                             <div class="row">
@@ -174,7 +174,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-3 d-flex flex-row-reverse">
-                                    <button class="btn btn-success" type="submit" name="submit">Добавить</button>
+                                    <button class="btn btn-success" type="submit" name="submit">Add</button>
                                 </div>
                             </div>
                         </div>

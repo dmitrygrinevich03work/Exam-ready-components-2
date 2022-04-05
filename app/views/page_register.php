@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-        Регистрация
+        Registration
     </title>
     <meta name="description" content="Login">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,14 +32,14 @@
                         <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9 border-0">
                             <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
                                 <img src="img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
-                                <span class="page-logo-text mr-1">Учебный проект</span>
+                                <span class="page-logo-text mr-1">Educational project</span>
                             </a>
                         </div>
                         <span class="text-white opacity-50 ml-auto mr-2 hidden-sm-down">
-                            Уже зарегистрированы?
+                            Already registered?
                         </span>
-                        <a href="login" class="btn-link text-white ml-auto ml-sm-0">
-                            Войти
+                        <a href="/login" class="btn-link text-white ml-auto ml-sm-0">
+                            Sign in
                         </a>
                     </div>
                 </div>
@@ -48,11 +48,11 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <h2 class="fs-xxl fw-500 mt-4 text-white text-center">
-                                    Регистрация
+                                    Registration
                                     <small class="h3 fw-300 mt-3 mb-5 text-white opacity-60 hidden-sm-down">
-                                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.
-                                        <br> 
-                                        По своей сути рыбатекст является альтернативой традиционному lorem ipsum
+                                        It has long been found that when evaluating design and composition, readable text makes it difficult to concentrate.
+                                        <br>
+                                        At its core, the fish text is an alternative to the traditional lorem ipsum
                                         
                                     </small>
                                 </h2>
@@ -64,23 +64,23 @@
                                         <div class="form-group">
                                             <label class="form-label" for="user_name">Name</label>
                                             <input type="text" id="user_name" name="user_name" class="form-control" placeholder="User Name" required>
-                                            <div class="invalid-feedback">Заполните поле.</div>
+                                            <div class="invalid-feedback">Fill in the field.</div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label" for="email">Email</label>
                                             <input type="email" id="email" name="email" class="form-control" placeholder="Эл. адрес" required>
-                                            <div class="invalid-feedback">Заполните поле.</div>
-                                            <div class="help-block">Эл. адрес будет вашим логином при авторизации</div>
+                                            <div class="invalid-feedback">Fill in the field.</div>
+                                            <div class="help-block">Email the address will be your username during authorization</div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-label" for="password">Пароль <br></label>
+                                            <label class="form-label" for="password">Password <br></label>
                                             <input type="password" id="password" name="password" class="form-control" placeholder="" required>
-                                            <div class="invalid-feedback">Заполните поле.</div>
+                                            <div class="invalid-feedback">Fill in the field.</div>
                                         </div>
                                        
                                         <div class="row no-gutters">
                                             <div class="col-md-4 ml-auto text-right">
-                                                <button id="js-login-btn" type="submit" name="submit" class="btn btn-block btn-danger btn-lg mt-3">Регистрация</button>
+                                                <button id="js-login-btn" type="submit" name="submit" class="btn btn-block btn-danger btn-lg mt-3">Registration</button>
                                             </div>
                                         </div>
                                     </form>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-        Войти
+        To come in
     </title>
     <meta name="description" content="Login">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,7 @@
     <div class="page-logo m-0 w-100 align-items-center justify-content-center rounded border-bottom-left-radius-0 border-bottom-right-radius-0 px-4">
         <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
             <img src="img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
-            <span class="page-logo-text mr-1">Учебный проект</span>
+            <span class="page-logo-text mr-1">Educational project</span>
             <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
         </a>
     </div>
@@ -39,23 +39,24 @@
         <form action="/login_handler" method="POST">
             <div class="form-group">
                 <label class="form-label" for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Эл. адрес" value="">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email the address" value="">
             </div>
             <div class="form-group">
-                <label class="form-label" for="password">Пароль</label>
+                <label class="form-label" for="password">Password</label>
                 <input type="password" id="password" name="password" class="form-control" placeholder="">
             </div>
             <div class="form-group text-left">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="rememberme">
-                    <label class="custom-control-label" for="rememberme" name="rememberme">Запомнить меня</label>
+                    <label class="custom-control-label" for="rememberme" name="rememberme">Remember me</label>
                 </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-default float-right">Войти</button>
+            <button type="submit" name="submit" class="btn btn-default float-right">
+                Sign in</button>
         </form>
     </div>
     <div class="blankpage-footer text-center">
-        Нет аккаунта? <a href="/register"><strong>Зарегистрироваться</strong>
+        Don't have an account? <a href="/register"><strong>Register</strong>
     </div>
 </div>
 <video poster="img/backgrounds/clouds.png" id="bgvid" playsinline autoplay muted loop>
