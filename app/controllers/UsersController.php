@@ -1,8 +1,4 @@
 <?php
-//Разобраться с флеш сообщением!
-//Добавить новый компонент который будет добавлять медиа! И сделать загрузку картинки!
-//Сделать редирект
-//Повыводить визде где надо флеш сообщение!
 namespace App\controllers;
 
 if (!session_id()) @session_start();
@@ -56,16 +52,16 @@ class UsersController
         try {
             $userId = $this->auth->admin()->createUser($_POST['email'], $_POST['password'], $_POST['user_name']);
             $this->flash->message($flash_massages['success_create_user'] . " " . $userId, 'success');
-            echo flash()->display() . $this->templates->render('create_user');
+            header("Location: /");
         } catch (\Delight\Auth\InvalidEmailException $e) {
             $this->flash->message($flash_massages['error_create_email'], 'error');
-            echo flash()->display() . $this->templates->render('create_user');
+            header("Location: /");
         } catch (\Delight\Auth\InvalidPasswordException $e) {
             $this->flash->message($flash_massages['error_create_password'], 'error');
-            echo flash()->display() . $this->templates->render('create_user');
+            header("Location: /");
         } catch (\Delight\Auth\UserAlreadyExistsException $e) {
             $this->flash->message($flash_massages['warning_create_user'], 'warning');
-            echo flash()->display() . $this->templates->render('create_user');
+            header("Location: /");
         }
 
         $this->add_information($userId);
@@ -85,16 +81,12 @@ class UsersController
         if ($this->auth->isLoggedIn()) {
             if ($this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
                 echo $this->templates->render('edit', ['user' => $select_user]);//View edit
-                //Переходим на форму редактирования
             } else {
                 if ($get_user_id == $_GET['id']) {
-                    // Якщо твій аккаунт то переходиxcм на форму
                     echo $this->templates->render('edit', ['user' => $select_user]);//View edit
                 } else {
                     $this->flash->message("You can always only your profile", 'success');
-                    echo flash()->display() . $this->templates->render('homepage');
-                    // Формуємо повідомлення "Що це не твій аккаунт!"
-                    // Формуєм повідомлення про не свій аккаунт!
+                    header("Location: /");
                 }
             }
         } else {
@@ -107,7 +99,7 @@ class UsersController
         if (isset($_POST['submit'])) {
             $this->qb->update(['username' => $_POST['user_name'], 'work' => $_POST['work'], 'phone' => $_POST['phone'], 'address' => $_POST['address']], $_POST['id'], 'users');
             $this->flash->message("Profile updated successfully", 'success');
-            echo flash()->display() . $this->templates->render('page_profile');
+            header("Location: /");
         }
     }
 
@@ -156,9 +148,7 @@ class UsersController
                     echo $this->templates->render('security', ['user' => $select_user]);//View edit
                 } else {
                     $this->flash->message("Can eventually only your profile", 'success');
-                    echo flash()->display() . $this->templates->render('/');
-                    // Формуємо повідомлення "Що це не твій аккаунт!"
-                    // Формуєм повідомлення про не свій аккаунт!
+                    header("Location: /");
                 }
             }
         } else {
@@ -194,18 +184,21 @@ class UsersController
                             $this->auth->admin()->changePasswordForUserById($_POST['id'], $new_password);
                         }
                         $this->flash->message("profile updated", 'success');
-                        echo flash()->display() . $this->templates->render('/page_profile');
+                        header("Location: /");
                     } catch (\Delight\Auth\NotLoggedInException $e) {
-                        die('Not logged in');
+                        $this->flash->message("Not logged in", 'warning');
+                        header("Location: /");
                     } catch (\Delight\Auth\InvalidPasswordException $e) {
-                        die('Invalid password(s)');
+                        $this->flash->message("Invalid password(s)", 'warning');
+                        header("Location: /");
                     } catch (\Delight\Auth\TooManyRequestsException $e) {
-                        die('Too many requests');
+                        $this->flash->message("Too many requests", 'warning');
+                        header("Location: /");
                     }
                 }
             } else {
                 $this->flash->message("Email busy!", 'warning');
-                echo flash()->display() . $this->templates->render('/security');
+                header("Location: /security");
             }
         }
     }
@@ -226,7 +219,7 @@ class UsersController
                     echo $this->templates->render('status', ['user' => $select_user, 'select_all_status' => $select_all_status]);
                 } else {
                     $this->flash->message("Можливо редагувати тільки свій профіль!", 'success');
-                    echo flash()->display() . $this->templates->render('/');
+                    header("Location: /");
                 }
             }
         } else {
@@ -242,10 +235,10 @@ class UsersController
         if ($userId == $_POST['id'] || $role_admin) {
             $this->qb->update(['status' => $_POST['select_status']], $_POST['id'], 'users');
             $this->flash->message("Профіль успішно оновлено!", 'success');
-            echo flash()->display() . $this->templates->render('/page_profile');
+            header("Location: /page_profile");
         } else {
             $this->flash->message("Ви не можете змінити статус!", 'warning');
-            echo flash()->display() . $this->templates->render('/status');
+            header("Location: /status");
         }
 
     }
@@ -264,8 +257,8 @@ class UsersController
                 if ($get_user_id == $_GET['id']) {
                     echo $this->templates->render('/page_media', ['user' => $select_user]);
                 } else {
-                    $this->flash->message("Можливо редагувати тільки свій профіль!", 'success');
-                    echo flash()->display() . $this->templates->render('/');
+                    $this->flash->message("Можливо редагувати тільки свій профіль!", 'warning');
+                    header("Location: /");
                 }
             }
         } else {
@@ -289,12 +282,12 @@ class UsersController
                     move_uploaded_file($tmp_name, '../img/' . $name_image);
                     $this->qb->update(['image' => $name_image], $_POST['id'], 'users');
                     $this->flash->message("Профіль успішно оновлено!", 'success');
-                    echo flash()->display() . $this->templates->render('/page_profile');
+                    header("Location: /page_profile");
                 }
             }
         } else {
             $this->flash->message("Ви не можете оновити профіль!", 'warning');
-            echo flash()->display() . $this->templates->render('/page_profile');
+            header("Location: /page_profile");
         }
     }
 
@@ -310,7 +303,7 @@ class UsersController
                     unlink('../img/' . $select_user['image']);//Удаляю аватарку с диска
                     $this->auth->admin()->deleteUserById($user_id);
                     $this->flash->message("Користувач видаленний!", 'warning');
-                    echo flash()->display() . $this->templates->render('/home');
+                    header("Location: /");
                 } catch (\Delight\Auth\UnknownIdException $e) {
                     die('Unknown ID');
                 }
@@ -326,7 +319,7 @@ class UsersController
                     }
                 } else {
                     $this->flash->message("Можливо редагувати тільки свій профіль!", 'warning');
-                    echo flash()->display() . $this->templates->render('/home');
+                    header("Location: /");
                 }
             }
         } else {

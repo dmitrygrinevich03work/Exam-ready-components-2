@@ -50,31 +50,30 @@ class RegisterController
         try {
             $userId = $this->auth->register($email, $password, $user_name, function ($selector, $token) {
                 $this->flash->message('Send ' . $selector . ' and ' . $token . ' to the user (e.g. via email)', 'success');
-                echo flash()->display() . $this->templates->render('/page_register');
             });
 
             $this->flash->message($flash_massages['success_create_user'] . " " . $userId, 'success');
-            echo flash()->display() . $this->templates->render('/page_register');
+            header("Location: /login");
 
         } catch (\Delight\Auth\InvalidEmailException $e) {
 
             $this->flash->message($flash_massages['error_check_email'], 'error');
-            echo flash()->display() . $this->templates->render('/page_register');
+            header("Location: /register");
 
         } catch (\Delight\Auth\InvalidPasswordException $e) {
 
             $this->flash->message($flash_massages['error_check_password'], 'error');
-            echo flash()->display() . $this->templates->render('/page_register');
+            header("Location: /register");
 
         } catch (\Delight\Auth\UserAlreadyExistsException $e) {
 
             $this->flash->message($flash_massages['warning_check_user'], 'warning');
-            echo flash()->display() . $this->templates->render('/page_register');
+            header("Location: /register");
 
         } catch (\Delight\Auth\TooManyRequestsException $e) {
 
             $this->flash->message($flash_massages['warning_requests'], 'warning');
-            echo flash()->display() . $this->templates->render('/page_register');
+            header("Location: /register");
         }
     }
 

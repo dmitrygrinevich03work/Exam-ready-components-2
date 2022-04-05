@@ -59,9 +59,7 @@
                             </div>
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
-                                    <div class="alert alert-danger text-dark" role="alert">
-                                        <strong>Уведомление!</strong> Этот эл. адрес уже занят другим пользователем.
-                                    </div>
+                                    <?php echo flash()->display(); ?>
                                     <form id="js-login" novalidate="" action="/register_handler" method="POST">
                                         <div class="form-group">
                                             <label class="form-label" for="user_name">Name</label>

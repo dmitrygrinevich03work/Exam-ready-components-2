@@ -1,8 +1,4 @@
 <?php
-// Start a Session
-//if( !session_id() ) @session_start();
-
-// Initialize Composer Autoload
 require "../vendor/autoload.php";
 
 use DI\ContainerBuilder;
@@ -32,17 +28,6 @@ $containerBuilder->addDefinitions([
 ]);
 
 $container = $containerBuilder->build();
-// // Function
-// flash()->message('Hot!', 'success');
-
-// echo flash()->display();
-// // require "../vendor/autoload.php";
-// // d([1,2,3]);
-
-// $templates = new League\Plates\Engine('../app/views');
-
-// // echo $templates->render('homepage', ['name' => 'Tania']);
-
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', ['App\controllers\HomeController', 'index']);
     $r->addRoute('GET', '/home', ['App\controllers\HomeController', 'index']);
@@ -64,9 +49,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/status', ['App\controllers\UsersController', 'status']);
     $r->addRoute('POST', '/update_status', ['App\controllers\UsersController', 'update_status']);
     $r->addRoute('GET', '/delete[/{id:\d+}]', ['App\controllers\UsersController', 'delete_user']);
-//    $r->addRoute('GET', '/user/{id:\d+}', ['App\controllers\HomeController', 'index']);
-    // $r->addRoute('GET', '/about/{id:\d+}', ['App\controllers\HomeController', 'about']);
-//    $r->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'get_article_handler');
 });
 
 // Fetch method and URI from somewhere

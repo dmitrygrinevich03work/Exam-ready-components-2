@@ -18,15 +18,15 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="page_login.html">Войти</a>
+                    <a class="nav-link" href="/login">Войти</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Выйти</a>
+                    <a class="nav-link" href="/logout">Выйти</a>
                 </li>
             </ul>
         </div>
@@ -38,6 +38,7 @@
             </h1>
 
         </div>
+        <?php echo flash()->display(); ?>
         <form action="/update_security" method="POST">
             <div class="row">
                 <div class="col-xl-6">
@@ -56,13 +57,13 @@
 
                                 <!-- password -->
                                 <div class="form-group">
-                                    <label class="form-label" for="simpleinput">Old Пароль</label>
+                                    <label class="form-label" for="simpleinput">Старий Пароль</label>
                                     <input type="password" name="old_password" id="simpleinput" class="form-control">
                                 </div>
 
                                 <!-- password confirmation-->
                                 <div class="form-group">
-                                    <label class="form-label" for="simpleinput">New Пароля</label>
+                                    <label class="form-label" for="simpleinput">Новий Пароля</label>
                                     <input type="password" name="new_password" id="simpleinput" class="form-control">
                                 </div>
 

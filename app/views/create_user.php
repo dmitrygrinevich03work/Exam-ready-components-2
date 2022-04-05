@@ -1,4 +1,3 @@
-<?php if( !session_id() ) @session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,16 +24,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="page_login.html">Войти</a>
+                <a class="nav-link" href="/login">Войти</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Выйти</a>
+                <a class="nav-link" href="/logout">Выйти</a>
             </li>
         </ul>
     </div>
@@ -176,7 +175,6 @@
                                 </div>
                                 <div class="col-md-12 mt-3 d-flex flex-row-reverse">
                                     <button class="btn btn-success" type="submit" name="submit">Добавить</button>
-<!--                                    <button type="submit" name="submit" class="btn btn-default float-right">Войти</button>-->
                                 </div>
                             </div>
                         </div>
